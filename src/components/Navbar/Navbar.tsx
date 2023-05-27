@@ -36,15 +36,6 @@ const Navbar = () => {
           <NavbarItem label="Social" />
           <NavbarItem label="Contact me" />
         </div>
-        <div className="ml-auto">
-          <div
-            onClick={toggleColorMode}
-            className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-white"
-          >
-            {mode === "dark" ? <BsMoon size={24} /> : <BsSun size={24} />}
-          </div>
-        </div>
-
         <div
           onClick={toggleMenu}
           className="relative flex cursor-pointer flex-row items-center gap-2 md:hidden"
@@ -55,6 +46,14 @@ const Navbar = () => {
             }`}
           />
           <NavbarMenu visible={menuOpen} />
+        </div>
+        <div className="ml-auto">
+          <div
+            onClick={toggleColorMode}
+            className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-white"
+          >
+            {mode === "dark" ? <BsMoon size={24} /> : <BsSun size={24} />}
+          </div>
         </div>
       </div>
     </nav>
