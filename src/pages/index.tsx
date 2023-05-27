@@ -1,10 +1,13 @@
-import { Navbar } from "@/components";
+import { Navbar, Content } from "@/components";
 import { type NextPage } from "next";
 
 const Home: NextPage = () => {
-  return <div>
-    <Navbar />
-  </div>
+  return (
+    <>
+      <Navbar />
+      <Content />
+    </>
+  );
 };
 
 export default Home;
