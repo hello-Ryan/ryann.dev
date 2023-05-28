@@ -1,12 +1,12 @@
-import { Navbar, Content } from "@/components";
+import { Navbar, Landing } from "@/components";
 import { type NextPage } from "next";
 
 const Home: NextPage = () => {
   return (
-    <>
+    <div>
       <Navbar />
-      <Content />
-    </>
+      <Landing />
+    </div>
   );
 };
 
