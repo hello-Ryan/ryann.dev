@@ -3,9 +3,9 @@ import { type NextPage } from "next";
 
 const Home: NextPage = () => {
   return (
-    <div>
+    <div className="flex flex-col h-screen">
       <Navbar />
-      <Landing />
+      <Landing className="grow"/>
     </div>
   );
 };
