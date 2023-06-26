@@ -3,9 +3,11 @@ import { type NextPage } from "next";
 
 const Home: NextPage = () => {
   return (
-    <div>
+    <div className="flex h-screen flex-col">
       <Navbar />
-      <Landing />
+      <div className="px-48">
+        <Landing className="flex grow flex-col justify-start" />
+      </div>
     </div>
   );
 };
