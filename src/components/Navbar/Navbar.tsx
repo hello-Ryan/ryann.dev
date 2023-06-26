@@ -27,7 +27,7 @@ const Navbar = () => {
 
   return (
     <nav className="dark:bg-transaprent z-40 w-full">
-      <div className="flex flex-row items-center px-16 py-3 transition duration-500">
+      <div className="flex flex-row items-center px-16 py-3 transition duration-500 pb-60">
         <TbHexagonLetterR className="cursor-pointer text-white" size={52} />
         <div className="ml-auto hidden flex-row md:flex">
           {tabs.map((tab) => (
