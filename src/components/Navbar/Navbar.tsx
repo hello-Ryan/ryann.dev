@@ -16,7 +16,6 @@ const Navbar: React.FC<NavbarProps> = ({ toggleForm }) => {
     { id: "Home" },
     { id: "Experience" },
     { id: "Projects" },
-    { id: "Social" },
   ];
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
