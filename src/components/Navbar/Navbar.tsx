@@ -5,29 +5,31 @@ import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
+import ContactMe from "../ContactMe/ContactMe";
 
-const Navbar = () => {
+export interface NavbarProps {
+  toggleForm: () => void;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ toggleForm }) => {
   const tabs = [
     { id: "Home" },
     { id: "Experience" },
     { id: "Projects" },
     { id: "Social" },
-    { id: "Contact Me" },
   ];
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
   const [activeTab, setActiveTab] = useState(tabs[0]?.id);
-
-  const [theme, setTheme] = useState('dark')
+  const [theme, setTheme] = useState("dark");
 
   const toggleMobileMenu = useCallback(() => {
     setMobileMenuOpen((current) => !current);
-  }, [])
+  }, []);
 
   return (
     <nav className="dark:bg-transaprent z-40 w-full">
-      <div className="flex flex-row items-center px-16 py-3 transition duration-500 pb-60">
+      <div className="flex flex-row items-center px-16 py-3 pb-60 transition duration-500">
         <TbHexagonLetterR className="cursor-pointer text-white" size={52} />
         <div className="ml-auto hidden flex-row md:flex">
           {tabs.map((tab) => (
@@ -50,6 +52,12 @@ const Navbar = () => {
               </span>
             </button>
           ))}
+          <span
+            className="text-1xl relative flex cursor-pointer items-center justify-center rounded-full px-4 font-semibold text-white hover:text-white/70"
+            onClick={toggleForm}
+          >
+            Contact Me
+          </span>
         </div>
         <div
           onClick={toggleMobileMenu}
