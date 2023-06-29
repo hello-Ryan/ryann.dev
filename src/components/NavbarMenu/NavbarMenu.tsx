@@ -15,9 +15,9 @@ const NavbarMenu: React.FC<NavbarMenuProps> = ({ visible, tabs }) => {
     <div className="absolute left-0 top-8 flex w-56 flex-col rounded-lg bg-zinc-800 py-5">
       <AnimatePresence>
         <div className="flex flex-col gap-2">
-          {tabs.map((tab,i) => (
+          {tabs.map((tab, i) => (
             <motion.div
-            variants={{
+              variants={{
                 hidden: (i) => ({
                   opacity: 0,
                   y: -i * 50,

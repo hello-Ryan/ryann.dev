@@ -29,7 +29,6 @@ export default {
           "84%": { width: "14ch" },
           "90%": { width: "15ch" },
           "96%": { width: "16ch" },
-
         },
         cursor: {
           "0%, 40%": {

@@ -9,3 +9,6 @@ export * from "./NavbarMenuItem";
 
 export { default as Landing } from "./Landing";
 export * from "./Landing";
+
+export { default as ContactMe } from "./ContactMe";
+export * from "./ContactMe";
