@@ -4,7 +4,7 @@ import {
   AiOutlineMail,
   AiFillLinkedin,
   AiOutlineInstagram,
-  AiOutlineArrowRight,
+
 } from "react-icons/ai";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
@@ -15,7 +15,7 @@ export interface ContactMeProps {
 }
 
 const ContactMe: React.FC<ContactMeProps> = ({ open, setOpen }) => {
-  const form = useRef(null);
+  const form = useRef(null)
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -25,8 +25,12 @@ const ContactMe: React.FC<ContactMeProps> = ({ open, setOpen }) => {
     return null;
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (!form.current) {
+      throw new Error('No form data')
+    }
 
     emailjs
       .sendForm(
@@ -35,14 +39,7 @@ const ContactMe: React.FC<ContactMeProps> = ({ open, setOpen }) => {
         form.current,
         "IhswmSrdQZXTJVhgc"
       )
-      .then(
-        (result) => {
-          console.log(result.text);
-        },
-        (error) => {
-          console.log(error.text);
-        }
-      );
+      .catch((error) => console.log(error));
   };
 
   const renderLeft = () => {
@@ -54,7 +51,7 @@ const ContactMe: React.FC<ContactMeProps> = ({ open, setOpen }) => {
           </p>
         </div>
         <div className="flex flex-col p-10 pl-0">
-          <form ref={form} onSubmit={handleSubmit}>
+          <form ref={form} onSubmit={(e) => handleSubmit(e)}>
             <div className="flex flex-col gap-5 pb-10">
               <input
                 className="h-20 rounded-md border border-b bg-transparent p-2 font-medium text-white outline-none"
