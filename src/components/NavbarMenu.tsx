@@ -1,5 +1,4 @@
 import React from "react";
-import { NavbarMenuItem } from "@/components";
 import { AnimatePresence, motion } from "framer-motion";
 
 export interface NavbarMenuProps {

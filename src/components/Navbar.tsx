@@ -1,11 +1,8 @@
 import { TbHexagonLetterR } from "react-icons/tb";
 import { NavbarMenu } from "@/components";
 import { BsChevronDown, BsMoon, BsSun } from "react-icons/bs";
-import { useCallback, useEffect, useState } from "react";
-import { useRouter } from "next/router";
+import { useCallback, useState } from "react";
 import { motion } from "framer-motion";
-import { useTheme } from "next-themes";
-import ContactMe from "../ContactMe/ContactMe";
 
 export interface NavbarProps {
   toggleForm: () => void;
