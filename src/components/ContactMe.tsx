@@ -1,11 +1,6 @@
-import React, { FormEventHandler, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { RxCross2 } from "react-icons/rx";
-import {
-  AiOutlineMail,
-  AiFillLinkedin,
-  AiOutlineInstagram,
-
-} from "react-icons/ai";
+import { AiOutlineMail, AiFillLinkedin, AiFillGithub } from "react-icons/ai";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 
@@ -15,7 +10,7 @@ export interface ContactMeProps {
 }
 
 const ContactMe: React.FC<ContactMeProps> = ({ open, setOpen }) => {
-  const form = useRef(null)
+  const form = useRef(null);
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -29,7 +24,7 @@ const ContactMe: React.FC<ContactMeProps> = ({ open, setOpen }) => {
     e.preventDefault();
 
     if (!form.current) {
-      throw new Error('No form data')
+      throw new Error("No form data");
     }
 
     emailjs
@@ -76,19 +71,13 @@ const ContactMe: React.FC<ContactMeProps> = ({ open, setOpen }) => {
                 name="message"
                 required
               />
-
               <motion.input
                 type="submit"
                 whileTap={{ scale: 0.9 }}
                 value="Send"
-                className="justify-bewteen h-15 flex items-center justify-between rounded-md bg-white p-3 hover:bg-gray-300"
+                className="justify-bewteen h-15 flex cursor-pointer items-center justify-between rounded-md 
+                bg-blue-600 p-3 font-semibold text-white hover:bg-blue-700"
               />
-              {/* <motion.div
-                  whileTap={{ scale: 0.9 }}
-                  className="justify-bewteen h-15 flex items-center justify-between rounded-md bg-white p-3 hover:bg-gray-300"
-                >
-                  Send <AiOutlineArrowRight />
-                </motion.div> */}
             </div>
           </form>
         </div>
@@ -141,7 +130,7 @@ const ContactMe: React.FC<ContactMeProps> = ({ open, setOpen }) => {
               />
             </div>
             <div className="w-min rounded-full bg-gray-100/20 p-2">
-              <AiOutlineInstagram
+              <AiFillGithub
                 size={24}
                 className="h-10 w-10 cursor-pointer text-white"
               />
@@ -172,7 +161,3 @@ const ContactMe: React.FC<ContactMeProps> = ({ open, setOpen }) => {
 };
 
 export default ContactMe;
-
-{
-  /* */
-}

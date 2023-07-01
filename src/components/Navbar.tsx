@@ -1,18 +1,23 @@
 import { TbHexagonLetterR } from "react-icons/tb";
 import { NavbarMenu } from "@/components";
 import { BsChevronDown, BsMoon, BsSun } from "react-icons/bs";
-import { useCallback, useEffect, useState } from "react";
-import { useRouter } from "next/router";
+import { useCallback, useState } from "react";
 import { motion } from "framer-motion";
-import { useTheme } from "next-themes";
-import ContactMe from "../ContactMe/ContactMe";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
 export interface NavbarProps {
   toggleForm: () => void;
 }
 
 const Navbar: React.FC<NavbarProps> = ({ toggleForm }) => {
-  const tabs = [{ id: "Home" }, { id: "Experience" }, { id: "Projects" }];
+  const tabs = [
+    { id: "Home", path: "/" },
+    { id: "Experience", path: "experience" },
+    { id: "Projects", path: "projects" },
+  ];
+
+  const router = useRouter();
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeTab, setActiveTab] = useState(tabs[0]?.id);
@@ -43,7 +48,7 @@ const Navbar: React.FC<NavbarProps> = ({ toggleForm }) => {
                 />
               )}
               <span className="relative z-10 mix-blend-exclusion">
-                {tab.id}
+                <Link href={tab.path}>{tab.id}</Link>
               </span>
             </button>
           ))}
