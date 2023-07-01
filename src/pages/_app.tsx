@@ -19,9 +19,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
           <div className="flex h-screen flex-col">
             <Navbar toggleForm={toggleShowModal} />
             <div className="px-48">
-              <Component
-                {...pageProps}
-              />
+              <Component {...pageProps} />
             </div>
           </div>
         </div>
