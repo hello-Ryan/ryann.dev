@@ -3,8 +3,8 @@ import { RxCross2 } from "react-icons/rx";
 import { AiOutlineMail, AiFillLinkedin, AiFillGithub } from "react-icons/ai";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export interface ContactMeProps {
   open: boolean;
@@ -132,7 +132,7 @@ const ContactMe: React.FC<ContactMeProps> = ({ open, setOpen }) => {
                         void navigator.clipboard.writeText(
                           "ryanleung1029@gmail.com"
                         );
-                        toast("Copied to clipboard!")
+                        toast("Copied to clipboard!");
                       }}
                     >
                       ryanleung1029@gmail.com
@@ -182,7 +182,7 @@ const ContactMe: React.FC<ContactMeProps> = ({ open, setOpen }) => {
       >
         {renderLeft()}
         {renderRight()}
-        <ToastContainer theme="dark"/>
+        <ToastContainer theme="dark" />
       </motion.div>
     </div>
   );
