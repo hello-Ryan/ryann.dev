@@ -33,24 +33,26 @@ const Navbar: React.FC<NavbarProps> = ({ toggleForm }) => {
         <TbHexagonLetterR className="cursor-pointer text-white" size={52} />
         <div className="ml-auto hidden flex-row md:flex">
           {tabs.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`${activeTab === tab.id ? "" : "hover:text-white/70"}
+            <Link href={tab.path} key={tab.id}>
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`${activeTab === tab.id ? "" : "hover:text-white/70"}
               text-1xl relative rounded-full px-4 py-2 font-semibold text-white`}
-            >
-              {tab.id === activeTab && (
-                <motion.div
-                  layoutId="active-pill"
-                  className="absolute inset-0 bg-white"
-                  style={{ borderRadius: 9999 }}
-                  transition={{ type: "spring", duration: 0.6 }}
-                />
-              )}
-              <span className="relative z-10 mix-blend-exclusion">
-                <Link href={tab.path}>{tab.id}</Link>
-              </span>
-            </button>
+              >
+                {tab.id === activeTab && (
+                  <motion.div
+                    layoutId="active-pill"
+                    className="absolute inset-0 bg-white"
+                    style={{ borderRadius: 9999 }}
+                    transition={{ type: "spring", duration: 0.6 }}
+                  />
+                )}
+                <span className="relative z-10 mix-blend-exclusion">
+                  {tab.id}
+                </span>
+              </button>
+            </Link>
           ))}
           <span
             className="text-1xl relative flex cursor-pointer items-center justify-center rounded-full px-4 font-semibold text-white hover:text-white/70"
