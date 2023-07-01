@@ -13,17 +13,15 @@ const MyApp: AppType = ({ Component, pageProps }) => {
 
   return (
     <>
-      <>
-        <ContactMe open={showContactForm} setOpen={toggleShowModal} />
-        <div className={`${showContactForm ? "bg-gray-800 opacity-40" : ""}`}>
-          <div className="flex h-screen flex-col">
-            <Navbar toggleForm={toggleShowModal} />
-            <div className="px-48">
-              <Component {...pageProps} />
-            </div>
+      <ContactMe open={showContactForm} setOpen={toggleShowModal} />
+      <div className={`${showContactForm ? "bg-gray-800 opacity-40" : ""}`}>
+        <div className="flex h-screen flex-col">
+          <Navbar toggleForm={toggleShowModal} />
+          <div className="px-48">
+            <Component {...pageProps} />
           </div>
         </div>
-      </>
+      </div>
 
       <Analytics />
     </>

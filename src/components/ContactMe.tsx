@@ -3,6 +3,8 @@ import { RxCross2 } from "react-icons/rx";
 import { AiOutlineMail, AiFillLinkedin, AiFillGithub } from "react-icons/ai";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export interface ContactMeProps {
   open: boolean;
@@ -15,6 +17,7 @@ const ContactMe: React.FC<ContactMeProps> = ({ open, setOpen }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [copied, setCopied] = useState(false);
 
   if (!open) {
     return null;
@@ -47,38 +50,44 @@ const ContactMe: React.FC<ContactMeProps> = ({ open, setOpen }) => {
         </div>
         <div className="flex flex-col p-10 pl-0">
           <form ref={form} onSubmit={(e) => handleSubmit(e)}>
-            <div className="flex flex-col gap-5 pb-10">
-              <input
-                className="h-20 rounded-md border border-b bg-transparent p-2 font-medium text-white outline-none"
-                placeholder="Name"
-                onChange={(e) => setName(e.target.value)}
-                name="name"
-                type="text"
-                required
-              />
-              <input
-                className="h-20 rounded-md border bg-transparent p-2 font-medium text-white outline-none"
-                placeholder="Email"
-                onChange={(e) => setEmail(e.target.value)}
-                name="email"
-                type="email"
-                required
-              />
-              <textarea
-                className="h-20 rounded-md border bg-transparent p-2 font-medium text-white outline-none"
-                placeholder="Message"
-                onChange={(e) => setMessage(e.target.value)}
-                name="message"
-                required
-              />
-              <motion.input
-                type="submit"
-                whileTap={{ scale: 0.9 }}
-                value="Send"
-                className="justify-bewteen h-15 flex cursor-pointer items-center justify-between rounded-md 
-                bg-blue-600 p-3 font-semibold text-white hover:bg-blue-700"
-              />
+            <div className="flex flex-col gap-1 pb-10">
+              <div className="flex flex-col">
+                <label className="p-2 pl-0 text-white">Name</label>
+                <input
+                  className="rounded-md border border-b border-slate-400 bg-transparent p-2 font-medium text-white outline-none"
+                  onChange={(e) => setName(e.target.value)}
+                  name="name"
+                  type="text"
+                  required
+                />
+              </div>
+              <div className="flex flex-col">
+                <label className="p-2 pl-0 text-white">Email</label>
+                <input
+                  className="rounded-md border border-slate-400 bg-transparent p-2 font-medium text-white outline-none"
+                  onChange={(e) => setEmail(e.target.value)}
+                  name="email"
+                  type="email"
+                  required
+                />
+              </div>
+              <div className="flex flex-col">
+                <label className="p-2 pl-0 text-white">Message</label>
+                <textarea
+                  className="h-20 rounded-md border border-slate-400 bg-transparent p-2 font-medium text-white outline-none"
+                  onChange={(e) => setMessage(e.target.value)}
+                  name="message"
+                  required
+                />
+              </div>
             </div>
+            <motion.input
+              type="submit"
+              whileTap={{ scale: 0.9 }}
+              value="Send"
+              className="justify-bewteen h-15  inline-block w-full cursor-pointer 
+                rounded-md bg-blue-600 p-3 font-semibold text-white hover:bg-blue-700"
+            />
           </form>
         </div>
         ;
@@ -104,7 +113,7 @@ const ContactMe: React.FC<ContactMeProps> = ({ open, setOpen }) => {
           </p>
         </div>
 
-        <div className="flex flex-col pt-10">
+        <div className="flex h-5/6 flex-col justify-between pt-10">
           <div className="flex flex-col gap-10">
             <div>
               <div className="flex flex-row items-center">
@@ -116,24 +125,42 @@ const ContactMe: React.FC<ContactMeProps> = ({ open, setOpen }) => {
                 </div>
                 <div className="pl-4">
                   <p className="font-mono text-white">
-                    Email: ryanleung1029@gmail.com
+                    Email:{" "}
+                    <p
+                      className="inline hover:cursor-pointer"
+                      onClick={() => {
+                        void navigator.clipboard.writeText(
+                          "ryanleung1029@gmail.com"
+                        );
+                        toast("Copied to clipboard!")
+                      }}
+                    >
+                      ryanleung1029@gmail.com
+                    </p>
                   </p>
                 </div>
               </div>
             </div>
           </div>
-          <div className="flex flex-row items-center justify-center gap-4 ">
+          <div className="flex flex-row items-center justify-center gap-4">
             <div className="w-min rounded-full bg-gray-100/20 p-2">
-              <AiFillLinkedin
-                size={24}
-                className="h-10 w-10 cursor-pointer text-white"
-              />
+              <a
+                href="https://www.linkedin.com/in/ryan-leung-59774b195/"
+                target="_blank"
+              >
+                <AiFillLinkedin
+                  size={24}
+                  className="h-10 w-10 cursor-pointer text-white"
+                />
+              </a>
             </div>
             <div className="w-min rounded-full bg-gray-100/20 p-2">
-              <AiFillGithub
-                size={24}
-                className="h-10 w-10 cursor-pointer text-white"
-              />
+              <a href="https://github.com/hello-Ryan" target="_blank">
+                <AiFillGithub
+                  size={24}
+                  className="h-10 w-10 cursor-pointer text-white"
+                />
+              </a>
             </div>
           </div>
         </div>
@@ -155,6 +182,7 @@ const ContactMe: React.FC<ContactMeProps> = ({ open, setOpen }) => {
       >
         {renderLeft()}
         {renderRight()}
+        <ToastContainer theme="dark"/>
       </motion.div>
     </div>
   );
