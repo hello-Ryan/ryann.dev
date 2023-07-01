@@ -17,7 +17,6 @@ const ContactMe: React.FC<ContactMeProps> = ({ open, setOpen }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const [copied, setCopied] = useState(false);
 
   if (!open) {
     return null;
