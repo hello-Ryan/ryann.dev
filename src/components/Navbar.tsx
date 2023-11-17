@@ -13,11 +13,12 @@ export interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({ toggleForm }) => {
   const tabs = [
     { id: "Home", path: "/" },
-    { id: "Experience", path: "experience" },
-    { id: "Projects", path: "projects" },
+    { id: "Experience", path: "/experience" },
+    { id: "Projects", path: "/projects" },
   ];
 
   const router = useRouter();
+  const path = router.pathname.replace("/", "");
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeTab, setActiveTab] = useState(tabs[0]?.id);

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import { RxCross2 } from "react-icons/rx";
 import { AiOutlineMail, AiFillLinkedin, AiFillGithub } from "react-icons/ai";
 import { motion } from "framer-motion";
@@ -14,10 +14,6 @@ export interface ContactMeProps {
 const ContactMe: React.FC<ContactMeProps> = ({ open, setOpen }) => {
   const form = useRef(null);
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-
   if (!open) {
     return null;
   }
@@ -29,6 +25,12 @@ const ContactMe: React.FC<ContactMeProps> = ({ open, setOpen }) => {
       throw new Error("No form data");
     }
 
+    const handleSuccess = () => {
+      const f = document.getElementById("contact_form") as HTMLFormElement;
+      toast.success("Email sent and received!");
+      f.reset();
+    };
+
     emailjs
       .sendForm(
         "service_qftm3qh",
@@ -36,7 +38,14 @@ const ContactMe: React.FC<ContactMeProps> = ({ open, setOpen }) => {
         form.current,
         "IhswmSrdQZXTJVhgc"
       )
-      .catch((error) => console.log(error));
+      .then((res) =>
+        res.status === 200
+          ? handleSuccess()
+          : toast.error("Email failed to sent, please try again later.")
+      )
+      .catch(() =>
+        toast.error("Email failed to sent, please try again later.")
+      );
   };
 
   const renderLeft = () => {
@@ -48,13 +57,12 @@ const ContactMe: React.FC<ContactMeProps> = ({ open, setOpen }) => {
           </p>
         </div>
         <div className="flex flex-col p-10 pl-0">
-          <form ref={form} onSubmit={(e) => handleSubmit(e)}>
+          <form ref={form} onSubmit={(e) => handleSubmit(e)} id="contact_form">
             <div className="flex flex-col gap-1 pb-10">
               <div className="flex flex-col">
                 <label className="p-2 pl-0 text-white">Name</label>
                 <input
                   className="rounded-md border border-b border-slate-400 bg-transparent p-2 font-medium text-white outline-none"
-                  onChange={(e) => setName(e.target.value)}
                   name="name"
                   type="text"
                   required
@@ -64,7 +72,6 @@ const ContactMe: React.FC<ContactMeProps> = ({ open, setOpen }) => {
                 <label className="p-2 pl-0 text-white">Email</label>
                 <input
                   className="rounded-md border border-slate-400 bg-transparent p-2 font-medium text-white outline-none"
-                  onChange={(e) => setEmail(e.target.value)}
                   name="email"
                   type="email"
                   required
@@ -73,8 +80,7 @@ const ContactMe: React.FC<ContactMeProps> = ({ open, setOpen }) => {
               <div className="flex flex-col">
                 <label className="p-2 pl-0 text-white">Message</label>
                 <textarea
-                  className="h-20 rounded-md border border-slate-400 bg-transparent p-2 font-medium text-white outline-none"
-                  onChange={(e) => setMessage(e.target.value)}
+                  className="h-56 max-h-56 resize-none rounded-md border border-slate-400 bg-transparent p-2 font-medium text-white outline-none"
                   name="message"
                   required
                 />
@@ -89,7 +95,6 @@ const ContactMe: React.FC<ContactMeProps> = ({ open, setOpen }) => {
             />
           </form>
         </div>
-        ;
       </div>
     );
   };
