@@ -1,11 +1,8 @@
-import { Landing } from "@/components";
 import { type NextPage } from "next";
 
 const Home: NextPage = () => {
   return (
-    <>
-      <Landing className="" />
-    </>
+    <h1 className="text-white">Work in progress</h1>
   );
 };
 
