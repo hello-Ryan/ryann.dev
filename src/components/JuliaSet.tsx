@@ -22,19 +22,19 @@ const sketch: Sketch = (p5: P5CanvasInstance) => {
 
     for (let x = 0; x < p5.width; x++) {
       for (let y = 0; y < p5.height; y++) {
-        let a = p5.map(x, 0, p5.width, -1.5, 1.5);
-        let b = p5.map(y, 0, p5.height, -1.5, 1.5);
+        let a: GLfloat = p5.map(x, 0, p5.width, -1.5, 1.5);
+        let b: GLfloat = p5.map(y, 0, p5.height, -1.5, 1.5);
 
         let n = 0;
         // let ca = p5.map(p5.mouseX, 0, p5.width, -1, 1)
         // let cb = p5.map(p5.mouseY, 0, p5.height, -1, 1)
 
-        let ca = -0.8
-        let cb = -0.156
+        const ca = -0.8
+        const cb = -0.156
 
         while (n < maxIterations) {
-          let aa = a * a - b * b;
-          let bb = 2 * a * b;
+          const aa = a * a - b * b;
+          const bb = 2 * a * b;
 
           a = aa + ca;
           b = bb + cb;
@@ -51,7 +51,7 @@ const sketch: Sketch = (p5: P5CanvasInstance) => {
           bright = 0;
         }
 
-        let pix = (x + y * p5.width) * 4;
+        const pix = (x + y * p5.width) * 4;
 
         p5.pixels[pix] = bright;
         p5.pixels[pix + 1] = 0;
