@@ -21,8 +21,8 @@ const sketch: Sketch = (p5: P5CanvasInstance) => {
         },
         {
             a: "X",
-            b: "F+[[X]-X]-F[-FX]+X"
-        }
+            b: "F+[[X]-X]-F[-FX]+X",
+        },
     ];
 
     const generate = () => {
@@ -48,13 +48,12 @@ const sketch: Sketch = (p5: P5CanvasInstance) => {
     };
 
     const turtle = async () => {
-        // p5.background(51);
         p5.resetMatrix();
         p5.translate(p5.width / 2, p5.height);
-        p5.stroke(255);
+        const col = sentence.length;
+        p5.stroke(col % 255, col % 123, col % 391, 255);
         for (let x = 0; x < sentence.length; x++) {
             const current = sentence.charAt(x);
-            // await new Promise(r => setTimeout(r, 1));
             if (current === "F") {
                 p5.line(0, 0, 0, -len);
                 p5.translate(0, -len);
@@ -64,6 +63,7 @@ const sketch: Sketch = (p5: P5CanvasInstance) => {
                 p5.rotate(-angle);
             } else if (current === "[") {
                 p5.push();
+                await new Promise((r) => setTimeout(r, 0.1));
             } else if (current === "]") {
                 p5.pop();
             }
@@ -72,16 +72,8 @@ const sketch: Sketch = (p5: P5CanvasInstance) => {
 
     p5.setup = async () => {
         p5.createCanvas(700, 700);
-        generate()
-        generate()
-        generate()
-        generate()
-        generate()
-        generate()
-        generate()
 
-
-
+        for (let y = 0; y < 7; y++) generate();
         await turtle();
     };
 };
