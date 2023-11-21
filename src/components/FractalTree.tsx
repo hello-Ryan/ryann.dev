@@ -9,20 +9,24 @@ import { type Sketch, type P5CanvasInstance } from "@p5-wrapper/react";
 import { NextReactP5Wrapper } from "@p5-wrapper/next";
 
 const sketch: Sketch = (p5: P5CanvasInstance) => {
-    const axiom = "F";
+    const axiom = "X";
     let sentence = axiom;
-    const angle = p5.radians(25);
-    let len = 100;
+    const angle = p5.radians(-25);
+    let len = 70;
 
     const grammar = [
         {
             a: "F",
-            b: "FF+[+F-F-F]-[-F+F+F]",
+            b: "FF",
         },
+        {
+            a: "X",
+            b: "F+[[X]-X]-F[-FX]+X"
+        }
     ];
 
     const generate = () => {
-        len *= 0.56;
+        len *= 0.6;
         let nextSentence = "";
         for (let i = 0; i < sentence.length; i++) {
             const current = sentence.charAt(i);
@@ -41,17 +45,16 @@ const sketch: Sketch = (p5: P5CanvasInstance) => {
             }
         }
         sentence = nextSentence;
-        // p5.createP(nextSentence);
-        turtle();
     };
 
-    const turtle = () => {
-        p5.background(51);
+    const turtle = async () => {
+        // p5.background(51);
         p5.resetMatrix();
         p5.translate(p5.width / 2, p5.height);
-        p5.stroke(255,100);
+        p5.stroke(255);
         for (let x = 0; x < sentence.length; x++) {
             const current = sentence.charAt(x);
+            // await new Promise(r => setTimeout(r, 1));
             if (current === "F") {
                 p5.line(0, 0, 0, -len);
                 p5.translate(0, -len);
@@ -67,19 +70,25 @@ const sketch: Sketch = (p5: P5CanvasInstance) => {
         }
     };
 
-    p5.setup = () => {
-        p5.createCanvas(600, 600);
-        p5.background(51);
-        p5.createP(axiom);
-        turtle();
-        const button = p5.createButton("generate");
-        button.mousePressed(generate);
+    p5.setup = async () => {
+        p5.createCanvas(700, 700);
+        generate()
+        generate()
+        generate()
+        generate()
+        generate()
+        generate()
+        generate()
+
+
+
+        await turtle();
     };
 };
 
 const FractalTree = () => {
     return (
-        <div className="text-white">
+        <div className="w-6/12">
             <NextReactP5Wrapper sketch={sketch} />
         </div>
     );
