@@ -4,14 +4,6 @@
 
 @layer base {
   body {
-    @apply h-full overflow-x-hidden bg-gray-800;
+    @apply h-full overflow-x-hidden bg-black;
   }
-}
-
-#__ next {
-  @apply h-full;
-}
-
-html {
-  @apply h-full;
 }
