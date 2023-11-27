@@ -12,11 +12,11 @@ const Home: NextPage = () => {
     ];
 
     return (
-        <div className=" z-20 absolute block h-screen w-screen justify-center gap-10 overflow-hidden bg-gradient-to-br from-black via-zinc-800/20 to-black select-none">
+        <div className=" absolute z-20 block h-screen w-screen select-none justify-center gap-10 overflow-hidden bg-gradient-to-br from-black via-zinc-800/20 to-black">
             {/* <div className="fixed top-[-40px]">
                 <Torus />
             </div> */}
-            <div className="fixed z-100">
+            <div className="z-100 fixed">
                 <Test />
             </div>
 

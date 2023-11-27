@@ -1,10 +1,5 @@
 // taken from https://www.youtube.com/watch?v=wRmeFtRkF-8&list=PLkQj0oVF_lCyCnVRYZMvjhoMSHSre6Dge
-import React, {
-    Suspense,
-    useCallback,
-    useMemo,
-    useRef,
-} from "react";
+import React, { Suspense, useCallback, useMemo, useRef } from "react";
 import * as THREE from "three";
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";

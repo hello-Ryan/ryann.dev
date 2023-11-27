@@ -1,5 +1,5 @@
 import { type Config } from "tailwindcss";
-import defaultTheme from 'tailwindcss/defaultTheme';
+import defaultTheme from "tailwindcss/defaultTheme";
 
 export default {
     darkMode: "class",
@@ -7,7 +7,7 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                RobotoMono: ['RobotoMono', ...defaultTheme.fontFamily.sans]
+                RobotoMono: ["RobotoMono", ...defaultTheme.fontFamily.sans],
             },
             animation: {
                 cursor: "cursor .6s linear infinite alternate",
