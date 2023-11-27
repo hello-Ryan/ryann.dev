@@ -2,7 +2,6 @@
 import React, { useEffect, useRef } from "react";
 import type * as THREE from "three";
 import { Canvas, useFrame } from "@react-three/fiber";
-import circle from "../assets/circle.png";
 import { PerspectiveCamera, Text } from "@react-three/drei";
 
 const Torus = () => {
