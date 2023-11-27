@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Roboto+Mono:wght@400;700&family=Ubuntu&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,4 +7,5 @@
   body {
     @apply h-full overflow-x-hidden bg-black;
   }
+
 }
