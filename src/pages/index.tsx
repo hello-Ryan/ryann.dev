@@ -2,6 +2,7 @@ import { type NextPage } from "next";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Torus from "@/components/Torus";
+import Test from "./test";
 
 const Home: NextPage = () => {
     const navItems = [
@@ -11,10 +12,14 @@ const Home: NextPage = () => {
     ];
 
     return (
-        <div className=" z-100 absolute block h-screen w-screen justify-center gap-10 overflow-hidden bg-gradient-to-br from-black via-zinc-800/20 to-black p-10">
-            <div className="fixed top-[-40px]">
+        <div className=" absolute z-20 block h-screen w-screen select-none justify-center gap-10 overflow-hidden bg-gradient-to-br from-black via-zinc-800/20 to-black">
+            {/* <div className="fixed top-[-40px]">
                 <Torus />
+            </div> */}
+            <div className="z-100 fixed">
+                <Test />
             </div>
+
             <div className="relative pt-44">
                 <nav className="pb-10">
                     <ul className="text-md flex items-center justify-center gap-5 text-zinc-400">
