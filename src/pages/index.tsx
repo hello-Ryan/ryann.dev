@@ -1,14 +1,13 @@
 import { type NextPage } from "next";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import Torus from "@/components/Torus";
-import Test from "./test";
+import ParticleTerrain from "@/components/ParticleTerrain";
 
 const Home: NextPage = () => {
     const navItems = [
-        { title: "Projects", href: "projects" },
-        { title: "Experience", href: "experience" },
-        { title: "Contact", href: "contact" },
+        { title: "// projects", href: "projects" },
+        { title: "// experience", href: "experience" },
+        { title: "// contact", href: "contact" },
     ];
 
     return (
@@ -17,17 +16,17 @@ const Home: NextPage = () => {
                 <Torus />
             </div> */}
             <div className="z-100 fixed">
-                <Test />
+                <ParticleTerrain />
             </div>
 
             <div className="relative pt-44">
                 <nav className="pb-10">
-                    <ul className="text-md flex items-center justify-center gap-5 text-zinc-400">
+                    <ul className="text-md flex items-center justify-center gap-6 text-zinc-400 group">
                         {navItems.map((x) => (
                             <Link
                                 key={x.title}
                                 href={x.href}
-                                className="text-md duration-700 hover:text-zinc-400/70"
+                                className="text-md duration-700 tracking-tighter"
                             >
                                 {x.title}
                             </Link>
@@ -42,9 +41,8 @@ const Home: NextPage = () => {
                 </div>
 
                 <div className="mx-auto text-center">
-                    <p className="text-lg text-zinc-500">
-                        Hello, I am a junior software developer based in
-                        Melbourne.
+                    <p className="text-lg text-zinc-400">
+                        Aspiring Software Engineer and Web Developer
                     </p>
                 </div>
             </div>
