@@ -1,10 +1,11 @@
+"use client"
 // taken from https://www.youtube.com/watch?v=wRmeFtRkF-8&list=PLkQj0oVF_lCyCnVRYZMvjhoMSHSre6Dge
 import React, { Suspense, useCallback, useMemo, useRef } from "react";
 import * as THREE from "three";
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 
-const Test = () => {
+const ParticleTerrain = () => {
     let t = 0;
     const f = 0.002;
     const a = 3;
@@ -101,4 +102,4 @@ const Test = () => {
     );
 };
 
-export default Test;
+export default ParticleTerrain;
