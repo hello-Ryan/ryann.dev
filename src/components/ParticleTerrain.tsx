@@ -1,4 +1,4 @@
-"use client"
+"use client";
 // taken from https://www.youtube.com/watch?v=wRmeFtRkF-8&list=PLkQj0oVF_lCyCnVRYZMvjhoMSHSre6Dge
 import React, { Suspense, useCallback, useMemo, useRef } from "react";
 import * as THREE from "three";
