@@ -21,12 +21,12 @@ const Home: NextPage = () => {
 
             <div className="relative pt-44">
                 <nav className="pb-10">
-                    <ul className="text-md flex items-center justify-center gap-6 text-zinc-400 group">
+                    <ul className="text-md flex items-center justify-center gap-6 text-zinc-400">
                         {navItems.map((x) => (
                             <Link
                                 key={x.title}
                                 href={x.href}
-                                className="text-md duration-700 tracking-tighter"
+                                className="text-md duration-700 tracking-tighter hover:text-zinc-400/50 :"
                             >
                                 {x.title}
                             </Link>
