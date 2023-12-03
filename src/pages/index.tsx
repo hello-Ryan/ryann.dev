@@ -26,7 +26,7 @@ const Home: NextPage = () => {
                             <Link
                                 key={x.title}
                                 href={x.href}
-                                className="text-md duration-700 tracking-tighter hover:text-zinc-400/50 :"
+                                className="text-md : tracking-tighter duration-700 hover:text-zinc-400/50"
                             >
                                 {x.title}
                             </Link>
