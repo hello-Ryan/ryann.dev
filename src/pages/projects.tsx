@@ -1,4 +1,5 @@
 import PageBreak from "@/components/PageBreak";
+import ProjectCard from "@/components/ProjectCard";
 import { type NextPage } from "next";
 import Link from "next/link";
 import React from "react";
