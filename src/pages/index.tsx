@@ -10,7 +10,7 @@ const Home: NextPage = () => {
                     bg-gradient-to-br from-black via-zinc-800/60 to-black"
             >
                 <div className="relative">
-                    <div className="fixed h-screen w-screen">
+                    <div className="absolute h-screen w-screen">
                         <StarBackground />
                     </div>
                     <div className="absolute z-50">
