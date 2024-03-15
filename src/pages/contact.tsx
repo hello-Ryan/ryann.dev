@@ -1,7 +1,7 @@
 import React from "react";
 
-const Experience = () => {
+const Contact = () => {
     return <div className="text-white">WIP</div>;
 };
 
-export default Experience;
+export default Contact;

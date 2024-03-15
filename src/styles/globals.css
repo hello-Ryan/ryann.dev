@@ -2,16 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  body {
-    @apply h-full overflow-x-hidden bg-gray-800;
-  }
+#root {
+  width: 100vw;
+  height: 100vh;
+  overflow-y: hidden;
 }
 
-#__ next {
-  @apply h-full;
-}
-
-html {
-  @apply h-full;
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #171720;
 }

@@ -1,91 +1,31 @@
-import { TbHexagonLetterR } from "react-icons/tb";
-import { NavbarMenu } from "@/components";
-import { BsChevronDown, BsMoon, BsSun } from "react-icons/bs";
-import { useCallback, useState } from "react";
-import { motion } from "framer-motion";
-import { useRouter } from "next/router";
+"use client";
 import Link from "next/link";
+import React from "react";
 
-export interface NavbarProps {
-  toggleForm: () => void;
-}
+const Navbar = () => {
+    const navItems = [
+        { title: ".home", href: "/" },
+        { title: ".projects", href: "projects" },
+        { title: ".experience", href: "experience" },
+        { title: ".contact", href: "contact" },
+    ];
 
-const Navbar: React.FC<NavbarProps> = ({ toggleForm }) => {
-  const tabs = [
-    { id: "Home", path: "/" },
-    { id: "Experience", path: "/experience" },
-    { id: "Projects", path: "/projects" },
-  ];
-
-  const router = useRouter();
-  const path = router.pathname.replace("/", "");
-
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState(tabs[0]?.id);
-  const [theme, setTheme] = useState("dark");
-
-  const toggleMobileMenu = useCallback(() => {
-    setMobileMenuOpen((current) => !current);
-  }, []);
-
-  return (
-    <nav className="dark:bg-transaprent z-40 w-full">
-      <div className="flex flex-row items-center px-16 py-3 pb-60 transition duration-500">
-        <TbHexagonLetterR className="cursor-pointer text-white" size={52} />
-        <div className="ml-auto hidden flex-row md:flex">
-          {tabs.map((tab) => (
-            <Link href={tab.path} key={tab.id}>
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`${activeTab === tab.id ? "" : "hover:text-white/70"}
-              text-1xl relative rounded-full px-4 py-2 font-semibold text-white`}
-              >
-                {tab.id === activeTab && (
-                  <motion.div
-                    layoutId="active-pill"
-                    className="absolute inset-0 bg-white"
-                    style={{ borderRadius: 9999 }}
-                    transition={{ type: "spring", duration: 0.6 }}
-                  />
-                )}
-                <span className="relative z-10 mix-blend-exclusion">
-                  {tab.id}
-                </span>
-              </button>
-            </Link>
-          ))}
-          <span
-            className="text-1xl relative flex cursor-pointer items-center justify-center rounded-full px-4 font-semibold text-white hover:text-white/70"
-            onClick={toggleForm}
-          >
-            Contact Me
-          </span>
-        </div>
-        <div
-          onClick={toggleMobileMenu}
-          className="relative flex cursor-pointer flex-row items-center gap-2 md:hidden"
-        >
-          <BsChevronDown
-            className={`ml-2 transform text-white transition duration-300 ${
-              mobileMenuOpen ? "-scale-y-100" : ""
-            }`}
-          />
-          <NavbarMenu visible={mobileMenuOpen} tabs={tabs} />
-        </div>
-        <div className="ml-10">
-          <div
-            onClick={() =>
-              theme == "dark" ? setTheme("light") : setTheme("dark")
-            }
-            className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-white"
-          >
-            {theme === "dark" ? <BsMoon size={24} /> : <BsSun size={24} />}
-          </div>
-        </div>
-      </div>
-    </nav>
-  );
+    return (
+        <nav className="w-screen overflow-hidden px-5 py-10">
+            <ul className="text-base flex items-center justify-center gap-9 text-zinc-400">
+                {navItems.map((x) => (
+                    <Link
+                        key={x.title}
+                        href={`#${x.href}`}
+                        scroll={false}
+                        className="lg:text-lg tracking-tight peer text-sm text-zinc-300 duration-300 hover:opacity-70"
+                    >
+                        {x.title}
+                    </Link>
+                ))}
+            </ul>
+        </nav>
+    );
 };
 
 export default Navbar;
