@@ -24,11 +24,9 @@ const StarBackground = () => {
         <div className="h-full w-full">
             <Canvas camera={{ position: [0, 0, 0.5] }}>
                 <mesh>
-
                     {/* <Parralax /> */}
-                    <Sparkles count={100} color={lightBlue} speed={0.15}/>
+                    <Sparkles count={100} color={lightBlue} speed={0.1}/>
                     <meshStandardMaterial />
-                    <Stats />
                 </mesh>
             </Canvas>
         </div>
