@@ -2,13 +2,16 @@
 import Link from "next/link";
 import React from "react";
 
-const Navbar = () => {
-    const navItems = [
-        { title: ".home", href: "/" },
-        { title: ".projects", href: "projects" },
-        { title: ".experience", href: "experience" },
-        { title: ".contact", href: "contact" },
-    ];
+type NavItem = {
+    title: string,
+    href: string,
+}
+
+interface NavbarProps {
+    navItems: NavItem[]
+}
+
+const Navbar:React.FC<NavbarProps> = ({ navItems }) => {
 
     return (
         <nav className="w-screen overflow-hidden px-5 py-10">
@@ -16,8 +19,7 @@ const Navbar = () => {
                 {navItems.map((x) => (
                     <Link
                         key={x.title}
-                        href={`#${x.href}`}
-                        scroll={false}
+                        href={x.href}
                         className="lg:text-base tracking-tight peer text-sm text-zinc-300 duration-300 hover:opacity-70"
                     >
                         {x.title}
