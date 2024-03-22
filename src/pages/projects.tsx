@@ -19,8 +19,7 @@ const Projects: NextPage = () => {
                     <div>
                         <h1 className="text-4xl font-semibold">My Projects</h1>
                         <p className="text-base py-5 font-normal text-zinc-500">
-                            Collection of projects I&apos;ve worked on
-                            throughout my time as a software engineer.
+                            Collection of projects that I&apos;ve worked on.
                         </p>
                     </div>
                 </div>

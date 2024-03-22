@@ -2,7 +2,7 @@
 import { OrbitControls, Stars, Sparkles, Stats } from "@react-three/drei";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import React from "react";
-import { Camera, Color, Vector2, Vector3 } from "three";
+import { Color, } from "three";
 
 
 const StarBackground = () => {

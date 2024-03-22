@@ -3,6 +3,12 @@ import Navbar from "@/components/Navbar";
 import StarBackground from "@/components/StarBackground";
 
 const Home: NextPage = () => {
+    const navItems = [
+        {title: ".projects", href: "projects"},
+        {title: ".experience", href: "experience"},
+        {title: ".contact", href: "contact"}
+    ]
+
     return (
         <div className="overflow-hidden">
             <div
@@ -13,7 +19,7 @@ const Home: NextPage = () => {
                     <StarBackground />
                 </div>
                 <div className="absolute z-20">
-                    <Navbar />
+                    <Navbar navItems={navItems}/>
                 </div>
 
                 <div className="absolute z-10 flex h-screen w-screen flex-col items-center justify-center">
@@ -28,29 +34,6 @@ const Home: NextPage = () => {
                         Software Engineer
                     </p>
                 </div>
-            </div>
-
-            <div
-                id="projects"
-                className="relative z-20 block h-screen w-screen select-none justify-center gap-10 overflow-hidden 
-                bg-black text-white"
-            >
-                Projects
-            </div>
-
-            <div
-                id="experience"
-                className="relative z-20 block h-screen w-screen select-none justify-center gap-10 overflow-hidden 
-                bg-black text-white"
-            >
-                Experience
-            </div>
-            <div
-                id="contact"
-                className="relative z-20 block h-screen w-screen select-none justify-center gap-10 overflow-hidden 
-                bg-black text-white"
-            >
-                Contact
             </div>
         </div>
     );
