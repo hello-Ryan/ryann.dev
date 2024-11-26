@@ -20,7 +20,7 @@ const AboutMe: React.FC = () => {
         <motion.div
             initial={{ transform: "translateX(-1000px)" }}
             animate={{ transform: "translateX(0px)" }}
-            transition={{ duration: 0.5, delay: 1, ease: "anticipate" }}
+            transition={{ duration: 0.7, delay: 0.2, ease: "anticipate" }}
             className="p-10 text-white"
         >
             <div className="flex h-full w-full flex-col rounded-2xl bg-slate-200 p-5 py-9">
@@ -73,77 +73,92 @@ const AboutMe: React.FC = () => {
     );
 };
 
-const Experience: React.FC<{ expanded: boolean }> = ({ expanded }) => {
+const Experience: React.FC<{
+    expanded: boolean;
+    setExpanded: (x: boolean) => void;
+}> = ({ expanded, setExpanded }) => {
     return (
         <motion.div
-            className={`${
-                !expanded
-                    ? "col-span-2 rounded-2xl bg-[#04151F] p-2 text-white hover:cursor-pointer"
-                    : ""
+            className={`rounded-2xl bg-[#04151F] p-2 text-white hover:cursor-pointer ${
+                !expanded ? "col-span-2" : "h-full w-full"
             }`}
+            onClick={() => setExpanded(!expanded)}
             whileHover={{
-                scale: 0.97,
+                scale: !expanded ? 0.97 : 1,
                 transition: {
                     duration: 0.3,
                 },
             }}
+            animate={{ transform: "scale(1)" }}
         >
             Experience
         </motion.div>
     );
 };
-const Projects: React.FC<{ expanded: boolean }> = ({ expanded }) => {
+
+const Projects: React.FC<{
+    expanded: boolean;
+    setExpanded: (x: boolean) => void;
+}> = ({ expanded, setExpanded }) => {
     return (
         <motion.div
-            className={`${
-                !expanded
-                    ? "col-span-1 rounded-2xl bg-[#C44900] p-2 text-white hover:cursor-pointer"
-                    : ""
+            className={`rounded-2xl bg-[#C44900] p-2 text-white hover:cursor-pointer ${
+                !expanded ? "col-span-1" : "h-full w-full"
             }`}
+            onClick={() => setExpanded(!expanded)}
             whileHover={{
-                scale: 0.97,
+                scale: !expanded ? 0.97 : 1,
                 transition: {
                     duration: 0.3,
                 },
             }}
+            animate={{ transform: "scale(1)" }}
         >
             Projects
         </motion.div>
     );
 };
-const Contact: React.FC<{ expanded: boolean }> = ({ expanded }) => {
+
+const Contact: React.FC<{
+    expanded: boolean;
+    setExpanded: (x: boolean) => void;
+}> = ({ expanded, setExpanded }) => {
     return (
         <motion.div
-            className={`${
-                !expanded
-                    ? "rounded-2xl bg-[#EFD6AC] p-2 text-black hover:cursor-pointer"
-                    : ""
+            className={`rounded-2xl bg-[#EFD6AC] p-2 text-black hover:cursor-pointer ${
+                !expanded ? "col-span-1" : "h-full w-full"
             }`}
+            onClick={() => setExpanded(!expanded)}
             whileHover={{
-                scale: 0.97,
+                scale: !expanded ? 0.97 : 1,
                 transition: {
                     duration: 0.3,
                 },
             }}
+            animate={{ transform: "scale(1)" }}
         >
             Contact
         </motion.div>
     );
 };
-const Expertise: React.FC<{ expanded: boolean }> = ({ expanded }) => {
+
+const Expertise: React.FC<{
+    expanded: boolean;
+    setExpanded: (x: boolean) => void;
+}> = ({ expanded, setExpanded }) => {
     return (
         <motion.div
-            className={`${
-                !expanded
-                    ? "col-span-2 rounded-2xl bg-[#183A37] p-2 text-white hover:cursor-pointer"
-                    : ""
+            className={`rounded-2xl bg-[#183A37] p-2 text-white hover:cursor-pointer ${
+                !expanded ? "col-span-2" : "h-full w-full"
             }`}
+            onClick={() => setExpanded(!expanded)}
             whileHover={{
-                scale: 0.97,
+                scale: !expanded ? 0.97 : 1,
                 transition: {
                     duration: 0.3,
                 },
             }}
+            animate={{ transform: "scale(1)" }}
         >
             Expertise
         </motion.div>
@@ -151,6 +166,10 @@ const Expertise: React.FC<{ expanded: boolean }> = ({ expanded }) => {
 };
 
 const Home: NextPage = () => {
+    const [experience, setExperience] = useState(false);
+    const [projects, setProjects] = useState(false);
+    const [contact, setContact] = useState(false);
+    const [expertise, setExptertise] = useState(false);
 
     return (
         <div className="h-screen w-screen px-32 py-10">
@@ -164,17 +183,50 @@ const Home: NextPage = () => {
                         </p>
                         <AnimatePresence>
                             <div className="h-full w-full flex-1 rounded-2xl bg-slate-200 p-2">
-
-                                <div className="grid h-full w-full grid-rows-2 gap-3">
-                                    <div className="grid grid-cols-3 gap-3">
-                                        <Experience expanded={false} />
-                                        <Projects expanded={false} />
+                                {experience ? (
+                                    <Experience
+                                        expanded={true}
+                                        setExpanded={setExperience}
+                                    />
+                                ) : projects ? (
+                                    <Projects
+                                        expanded={true}
+                                        setExpanded={setProjects}
+                                    />
+                                ) : contact ? (
+                                    <Contact
+                                        expanded={true}
+                                        setExpanded={setContact}
+                                    />
+                                ) : expertise ? (
+                                    <Expertise
+                                        expanded={true}
+                                        setExpanded={setExptertise}
+                                    />
+                                ) : (
+                                    <div className="grid h-full w-full grid-rows-2 gap-3">
+                                        <div className="grid grid-cols-3 gap-3">
+                                            <Experience
+                                                expanded={false}
+                                                setExpanded={setExperience}
+                                            />
+                                            <Projects
+                                                expanded={false}
+                                                setExpanded={setProjects}
+                                            />
+                                        </div>
+                                        <div className="grid grid-cols-3 gap-3">
+                                            <Contact
+                                                expanded={false}
+                                                setExpanded={setContact}
+                                            />
+                                            <Expertise
+                                                expanded={false}
+                                                setExpanded={setExptertise}
+                                            />
+                                        </div>
                                     </div>
-                                    <div className="grid grid-cols-3 gap-3">
-                                        <Contact expanded={false} />
-                                        <Expertise expanded={false} />
-                                    </div>
-                                </div>
+                                )}
                             </div>
                         </AnimatePresence>
                     </div>
