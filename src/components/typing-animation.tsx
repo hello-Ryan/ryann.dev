@@ -33,7 +33,7 @@ export const TypingAnimation: React.FC<TypingAnimationProps> = ({ text, typingSp
   }, [delay, typeText])
 
   return (
-    <div className="font-mono text-2xl flex flex-row">
+    <div className="text-primary ">
       {displayedText}
       {/* TODO: add blinking cursor */}
     </div>
