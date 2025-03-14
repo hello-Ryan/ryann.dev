@@ -6,12 +6,7 @@ import { GiCat } from "react-icons/gi";
 import { useEffect, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import {
-    Accordion,
-    AccordionContent,
-    AccordionItem,
-    AccordionTrigger,
-} from "@/components/ui/accordion";
+import Experience, { IExperience } from "@/components/experience";
 
 gsap.registerPlugin(useGSAP);
 
@@ -27,7 +22,7 @@ export default function Index() {
     useEffect(() => {
         const x = setTimeout(() => {
             setIsLoading(false);
-        }, 4000);
+        }, 1);
         return () => clearTimeout(x);
     }, []);
 
@@ -41,6 +36,40 @@ export default function Index() {
         });
         // gsap.fromTo('#circle' ,0.5, {drawSVG:'0% 0%'}, {drawSVG:'0% 100%', ease:Power1.easeInOut})
     });
+
+    const experience: IExperience[] = [
+        {
+            title: "Full Stack Developer",
+            startDate: new Date(2024, 4),
+            company: "EY",
+            employmentType: "Full Time",
+            description:
+                "Full stack developer specialising in React, Next.js and tailwind for the front end, and for backend Node.js and Spring framework. Other responsiblities include, incident response, code review and documentation.",
+            location: "Melbourne, Australia",
+            showDuration: true
+        },
+        {
+            title: "Front End Developer",
+            startDate: new Date(2023, 0),
+            endDate: new Date(2023, 5),
+            employmentType: "Internship",
+            company: "EY",
+            description:
+                "Developed the web client for the EY Space for Earth product and platform. Developed using Remix, React/Typescript and NodeJS with integration utilising GraphQL. Developed storybook components to reduce component coupling and improve readability to ensure the app is scalable and sustainable.",
+            location: "Melbourne, Australia",
+            showDuration: true
+        },
+        {
+            title: "Bachelor of Computer Science",
+            startDate: new Date(2021, 0),
+            endDate: new Date(2023, 11),
+            employmentType: "Full Time",
+            company: "Monash",
+            description: "",
+            location: "Melbourne, Australia",
+            showDuration: false,
+        },
+    ];
 
     return (
         <>
@@ -78,7 +107,7 @@ export default function Index() {
 
             {/* Home page */}
             <div
-                className={`fixed bottom-7 left-7 right-7 top-7 select-none bg-background px-[28rem] py-8 text-primary dark:bg-background  ${
+                className={`fixed bottom-7 left-7 right-7 top-7 bg-background px-[28rem] py-8 text-primary dark:bg-background  ${
                     roboto.className
                 }  transition-opacity duration-700 ease-in  ${
                     !isLoading ? "opacity-100" : "opacity-0"
@@ -145,114 +174,12 @@ export default function Index() {
                         >
                             R3F
                         </a>
-                        to make websites come to life.
+                        {" "} to make websites come to life.
                     </p>
                 </div>
                 {/* Professional Experience */}
-                <div>
-                    <p className="font-extrabold text-4xl">Experience</p>
-                    {/* EY */}
-                    <div className="mt-1 flex flex-col rounded-sm bg-gray-600 p-3 text-white">
-                        <div className="flex flex-row gap-2 text-sm text-gray-400">
-                            <div>Melbourne, Australia  &middot; Full time </div>
-                            <div>May 2023 - Present</div>
-                        </div>
-
-                        <div>
-                            <p>
-                                Full stack developer specialising in React,
-                                Next.js and tailwind for the front end, and for
-                                backend Node.js and Spring framework. Other
-                                responsiblities include, incident response, code
-                                review and documentation.
-                            </p>
-                        </div>
-
-                        <div className="flex flex-row gap-1 pt-3">
-                            {/* move to component later */}
-                            <div className="rounded-full bg-gray-900 p-1 px-2">
-                                React
-                            </div>
-                            <div className="rounded-full bg-gray-900 p-1 px-2">
-                                Tailwind
-                            </div>
-                            <div className="rounded-full bg-gray-900 p-1 px-2">
-                                SASS
-                            </div>
-                            <div className="rounded-full bg-gray-900 p-1 px-2">
-                                Spring
-                            </div>
-                            <div className="rounded-full bg-gray-900 p-1 px-2">
-                                Node.js
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* EY - Intership */}
-                    <div className="mt-1 flex flex-col rounded-sm bg-gray-600 p-3 text-white">
-                        <div className="flex flex-row gap-2 text-sm text-gray-400">
-                            <div>
-                                Melbourne, Australia &middot; Full time &middot;
-                                Jan 2023 - Jul 2023
-                            </div>
-                        </div>
-                        <div>
-                            <p>
-                                Developed the web client for the EY Space for
-                                Earth product and platform. Developed using
-                                Remix, React/Typescript and NodeJS with
-                                integration utilising GraphQL. Developed
-                                storybook components to reduce component
-                                coupling and improve readability to ensure the
-                                app is scalable and sustainable.
-                            </p>
-                        </div>
-
-                        <div className="flex flex-row gap-1 pt-3">
-                            {/* move to component later */}
-                            <div className="rounded-full bg-gray-900 p-1 px-2">
-                                React
-                            </div>
-                            <div className="rounded-full bg-gray-900 p-1 px-2">
-                                SASS
-                            </div>
-                            <div className="rounded-full bg-gray-900 p-1 px-2">
-                                GraphQL
-                            </div>
-                            <div className="rounded-full bg-gray-900 p-1 px-2">
-                                Storybook
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Monash */}
-                    <div className="mt-1 flex flex-col rounded-sm bg-gray-600 p-3 text-white">
-                        <div className="flex flex-row gap-2 text-sm text-gray-400">
-                            <div>
-                                Monash University &middot; Full time &middot;
-                                2021 - 2023
-                            </div>
-                        </div>
-                        <div>
-                            <p>
-                                Bachelor of Computer Science
-                            </p>
-                        </div>
-
-                        <div className="flex flex-row gap-1 pt-3">
-                            {/* move to component later */}
-                            <div className="rounded-full bg-gray-900 p-1 px-2">
-                                Typescript
-                            </div>
-                            <div className="rounded-full bg-gray-900 p-1 px-2">
-                                Python
-                            </div>
-                            <div className="rounded-full bg-gray-900 p-1 px-2">
-                                Data structure and algorithms
-                            </div>
-
-                        </div>
-                    </div>
+                <div className="pt-10">
+                    <Experience experiences={experience} />
                 </div>
             </div>
         </>
