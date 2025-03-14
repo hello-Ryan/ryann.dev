@@ -55,7 +55,7 @@ export default function Index() {
             employmentType: "Internship",
             company: "EY",
             description:
-                "Developed the web client for the EY Space for Earth product and platform. Developed using Remix, React/Typescript and NodeJS with integration utilising GraphQL. Developed storybook components to reduce component coupling and improve readability to ensure the app is scalable and sustainable.",
+                "Remix, React/Typescript and NodeJS with integration utilising GraphQL. Storybook components to reduce component coupling and improve readability to ensure the app is scalable and sustainable.",
             location: "Melbourne, Australia",
             showDuration: true
         },

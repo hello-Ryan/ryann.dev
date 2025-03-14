@@ -1,4 +1,5 @@
 import { differenceInMonths, differenceInYears, format, sub } from "date-fns";
+import { useState } from "react";
 
 export interface IExperience {
     title: string;
@@ -26,42 +27,52 @@ function ExperienceCard({ experience }: { experience: IExperience }) {
     } = experience;
 
     const currentDate = new Date();
+    const [showDescription, setShowDescription] = useState(false);
     const durationInMonths =
         differenceInMonths(endDate ?? currentDate, startDate) + 1;
     const years = Math.floor(durationInMonths / 12);
     const months = durationInMonths % 12;
-
-    console.log(startDate);
 
     const formattedDate = (date: Date) => {
         return `${format(date, "MMM yyy")}`;
     };
 
     return (
-        <div className="rounded-sm p-2 text-sm hover:cursor-pointer hover:bg-gray-300">
-            <p className="font-semibold">{title}</p>
-            <p>
-                {company} &middot; {employmentType}
-            </p>
-            <div className="text-gray-600">
-                <p>
-                    {formattedDate(startDate)} -{" "}
-                    {endDate ? formattedDate(endDate) : "current"}
-                    {showDuration
-                        ? ` ·
+        <div
+            className="rounded-sm p-2 text-sm hover:cursor-pointer hover:bg-gray-300/50 bg-gray-300/75 transition"
+            onClick={() => setShowDescription((x) => description ? !x : x)}
+        >
+            {!showDescription ? (
+                <>
+                    <p className="font-semibold">{title}</p>
+                    <p>
+                        {company} &middot; {employmentType}
+                    </p>
+                    <div className="text-gray-600">
+                        <p>
+                            {formattedDate(startDate)} -{" "}
+                            {endDate ? formattedDate(endDate) : "current"}
+                            {showDuration
+                                ? ` ·
                           ${
                               years > 0
                                   ? `${years} yr${years !== 1 ? "s" : ""} `
                                   : ""
                           }${
-                              months > 0
-                                  ? `${months} mo${months !== 1 ? "s" : ""}`
-                                  : ""
-                          }`
-                        : ""}
-                </p>
-                <p>{location}</p>
-            </div>
+                                      months > 0
+                                          ? `${months} mo${
+                                                months !== 1 ? "s" : ""
+                                            }`
+                                          : ""
+                                  }`
+                                : ""}
+                        </p>
+                        <p>{location}</p>
+                    </div>
+                </>
+            ) : (
+                <div className="tracking-tighter text-sm">{description}</div>
+            )}
         </div>
     );
 }
