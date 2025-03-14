@@ -22,7 +22,7 @@ export default function Index() {
     useEffect(() => {
         const x = setTimeout(() => {
             setIsLoading(false);
-        }, 1);
+        }, 4000);
         return () => clearTimeout(x);
     }, []);
 
