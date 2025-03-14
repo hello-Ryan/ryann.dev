@@ -154,7 +154,7 @@ export default function Index() {
                     {/* EY */}
                     <div className="mt-1 flex flex-col rounded-sm bg-gray-600 p-3 text-white">
                         <div className="flex flex-row gap-2 text-sm text-gray-400">
-                            <div>Melbourne, Australia</div>
+                            <div>Melbourne, Australia  &middot; Full time </div>
                             <div>May 2023 - Present</div>
                         </div>
 
@@ -229,19 +229,13 @@ export default function Index() {
                     <div className="mt-1 flex flex-col rounded-sm bg-gray-600 p-3 text-white">
                         <div className="flex flex-row gap-2 text-sm text-gray-400">
                             <div>
-                                Melbourne, Australia &middot; Full time &middot;
+                                Monash University &middot; Full time &middot;
                                 2021 - 2023
                             </div>
                         </div>
                         <div>
                             <p>
-                                Developed the web client for the EY Space for
-                                Earth product and platform. Developed using
-                                Remix, React/Typescript and NodeJS with
-                                integration utilising GraphQL. Developed
-                                storybook components to reduce component
-                                coupling and improve readability to ensure the
-                                app is scalable and sustainable.
+                                Bachelor of Computer Science
                             </p>
                         </div>
 
@@ -254,11 +248,9 @@ export default function Index() {
                                 Python
                             </div>
                             <div className="rounded-full bg-gray-900 p-1 px-2">
-                                GraphQL
+                                Data structure and algorithms
                             </div>
-                            <div className="rounded-full bg-gray-900 p-1 px-2">
-                                Storybook
-                            </div>
+
                         </div>
                     </div>
                 </div>
